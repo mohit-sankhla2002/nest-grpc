@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package auth;
+
+message Users {
+    repeated User users = 1;
+}
+
+message Empty {
+}
+
+message CreateUserDto {
+    string username = 1;
+    string password = 2;
+    string email = 3;
+    int32 age = 4;
+    bool subscribed = 5;
+    SocialMedia socialMedia = 6;
+}
+
+message FindUserByIdDto {
+    string id = 1;
+}
+
+message UpdateUserDto {
+    string id = 1;
+    SocialMedia socialMedia = 2;
+}
+
+message PaginationDto {
+    int32 page = 1;
+    int32 skip = 2;
+}
+
+service UsersService {
+    rpc CreateUser(CreateUserDto) returns (User) {}
+    rpc FindAllUser(Empty) returns (Users) {}
+    rpc FindUserById(FindUserByIdDto) returns (User) {}
+    rpc UpdateUser(UpdateUserDto) returns (User) {}
+    rpc RemoveUser(FindUserByIdDto) returns (User) {}
+    rpc QueryUsers(stream PaginationDto) returns (stream Users) {}
+}
+
+message SocialMedia {
+    optional string facebookUri = 1;
+    optional string twitterUri = 2;
+}
+
+message User {
+    string id = 1;
+    string username = 2;
+    string password = 3;
+    string email = 4;
+    int32 age = 5;
+    bool subscribed = 6;
+    SocialMedia socialMedia = 7;
+}

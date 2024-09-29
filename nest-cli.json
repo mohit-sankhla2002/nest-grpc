@@ -1,26 +1,24 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/nest_grpc/src",
+  "sourceRoot": "apps/api-gateway/src",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/nest_grpc/tsconfig.app.json",
-    "assets": [
-      "**/*.proto"
-    ],
+    "tsConfigPath": "apps/api-gateway/tsconfig.app.json",
+    "assets": ["**/*.proto"],
     "watchAssets": true
   },
   "monorepo": true,
-  "root": "apps/nest_grpc",
+  "root": "apps/api-gateway",
   "projects": {
-    "nest_grpc": {
+    "api-gateway": {
       "type": "application",
-      "root": "apps/nest_grpc",
+      "root": "apps/api-gateway",
       "entryFile": "main",
-      "sourceRoot": "apps/nest_grpc/src",
+      "sourceRoot": "apps/api-gateway/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/nest_grpc/tsconfig.app.json"
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
       }
     },
     "auth": {
@@ -30,15 +28,6 @@
       "sourceRoot": "apps/auth/src",
       "compilerOptions": {
         "tsConfigPath": "apps/auth/tsconfig.app.json"
-      }
-    },
-    "contacts": {
-      "type": "application",
-      "root": "apps/contacts",
-      "entryFile": "main",
-      "sourceRoot": "apps/contacts/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/contacts/tsconfig.app.json"
       }
     },
     "notification": {
@@ -66,6 +55,15 @@
       "sourceRoot": "libs/common/src",
       "compilerOptions": {
         "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
+    },
+    "config": {
+      "type": "library",
+      "root": "libs/config",
+      "entryFile": "index",
+      "sourceRoot": "libs/config/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/config/tsconfig.lib.json"
       }
     }
   }

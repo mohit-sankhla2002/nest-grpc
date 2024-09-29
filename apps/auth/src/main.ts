@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AuthModule } from './auth.module';
 import { GrpcOptions, Transport } from '@nestjs/microservices';
-import path from 'path';
+import * as path from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<GrpcOptions>(AuthModule, {
